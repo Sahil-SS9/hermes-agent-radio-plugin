@@ -73,13 +73,35 @@ function openDetached(url) {
     openWithHost(url)
     return
   }
-  window.open(url, '_blank', 'noopener,noreferrer,popup=yes,width=640,height=470,resizable=yes')
+  window.open(url, '_blank', 'noopener,noreferrer,popup=yes,width=600,height=405,resizable=yes')
 }
 
-function frame(src, style, title) {
+// The expanded bar lifts out of the footer by the panel's own height, capped so it never takes more
+// than about a third of the window (P-148). Only the frame that asked is resized.
+const LIFT_CAP = 0.36
+
+function liftDock(source, requested) {
+  const cap = Math.max(DOCK_HEIGHT, Math.round(window.innerHeight * LIFT_CAP))
+  const height = Math.min(cap, Math.max(DOCK_HEIGHT, Math.round(requested)))
+  for (const node of document.querySelectorAll('iframe[data-radio-dock]')) {
+    if (node.contentWindow !== source) continue
+    const open = height > DOCK_HEIGHT
+    node.style.height = height + 'px'
+    const holder = node.parentElement
+    if (holder) {
+      holder.style.height = height + 'px'
+      // open, the panel brings its own surface and its crest sits on the app background
+      holder.style.background = open ? 'transparent' : '#0a0a0a'
+      holder.style.boxShadow = open ? 'none' : 'inset 0 1px 0 rgba(247,244,237,.09), 0 6px 18px rgba(0,0,0,.35)'
+    }
+  }
+}
+
+function frame(src, style, title, extra) {
   return el('iframe', {
     title: title || 'Hermes Radio',
     src,
+    ...(extra || {}),
     // The station's own player page; audio needs the autoplay allowance.
     style: { border: '0', display: 'block', background: 'transparent', ...style },
     allow: 'autoplay'
@@ -95,12 +117,15 @@ function Dock() {
         width: '100%',
         height: DOCK_HEIGHT + 'px',
         background: '#0a0a0a',
+        transition: 'height .28s cubic-bezier(.3,.9,.2,1)',
         borderRadius: '12px',
         boxShadow: 'inset 0 1px 0 rgba(247,244,237,.09), 0 6px 18px rgba(0,0,0,.35)',
         overflow: 'hidden'
       }
     },
-    frame(pageUrl('embed=1'), { width: '100%', height: DOCK_HEIGHT + 'px' }, 'Hermes Radio bar')
+    frame(pageUrl('embed=1'), { width: '100%', height: DOCK_HEIGHT + 'px' }, 'Hermes Radio bar', {
+      'data-radio-dock': '1'
+    })
   )
 }
 
@@ -193,6 +218,10 @@ export default {
     window.addEventListener('message', (event) => {
       const data = event.data
       if (!data || typeof data !== 'object') return
+      if (data.type === 'hermes-radio:height' && typeof data.height === 'number') {
+        if (isStationPage(event.origin, event.origin + '/ink')) liftDock(event.source, data.height)
+        return
+      }
       if (data.type !== 'hermes-radio:detach' || typeof data.url !== 'string') return
       if (isStationPage(event.origin, data.url)) openDetached(data.url)
     })
