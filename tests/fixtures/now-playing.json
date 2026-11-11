@@ -1,0 +1,61 @@
+{
+ "now": {
+  "kind": "music",
+  "item_id": "1c70d9c04ac24a53",
+  "started_at": "2026-11-11T16:47:06.450000+00:00",
+  "title": "The Garden",
+  "duration_s": 213.0,
+  "artist": "Sovthpaw",
+  "x_handle": null,
+  "x_url": null,
+  "suno_profile": null
+ },
+ "next": {
+  "kind": "segment",
+  "item_id": "852db3362ce1",
+  "duration_s": 3.464,
+  "segment_kind": "back_announce",
+  "title": "You were listening to The Garden by Sovthpaw. More music coming up after this."
+ },
+ "up_next": [
+  {
+   "kind": "segment",
+   "item_id": "852db3362ce1",
+   "duration_s": 3.464,
+   "segment_kind": "back_announce",
+   "title": "You were listening to The Garden by Sovthpaw. More music coming up after this."
+  },
+  {
+   "kind": "segment",
+   "item_id": "c75dd34346cf",
+   "duration_s": 23.866,
+   "segment_kind": "explainer",
+   "title": "You know that moment when you install new software and it just... stares back at you?"
+  },
+  {
+   "kind": "track",
+   "item_id": "314a3c30392d4ffa",
+   "title": "No Logic For The Soul",
+   "duration_s": 173.217959,
+   "artist": "Sahil",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null
+  }
+ ],
+ "mode": "normal",
+ "buffer_depth_s": 1658.177,
+ "buffer_target_s": 1200.0,
+ "listeners": 0,
+ "demo": {
+  "active": false,
+  "remaining": 0,
+  "total": 0,
+  "now_label": null
+ },
+ "uptime_s": 144263.5,
+ "mode_for_s": 144263.5,
+ "station_at": "2026-11-11T16:50:09.277839+00:00",
+ "stream_url": "/stream",
+ "fetched_at": "2026-11-11T16:50:10.621908+00:00"
+}

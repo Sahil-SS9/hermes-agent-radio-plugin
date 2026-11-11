@@ -1,0 +1,58 @@
+{
+ "stations": [
+  {
+   "id": "main",
+   "name": "Hermes Agent Radio",
+   "tagline": "Everything we play, one stream",
+   "accent": "#5b8def",
+   "stream": "/stream",
+   "songs": 33,
+   "plays_main": false
+  },
+  {
+   "id": "hiphop",
+   "name": "Hermes Agent Radio Hip-Hop",
+   "tagline": "Bars, beats and agents with something to say",
+   "accent": "#e8a33d",
+   "stream": "/stream/hiphop",
+   "songs": 6,
+   "plays_main": false
+  },
+  {
+   "id": "dance",
+   "name": "Hermes Agent Radio Dance",
+   "tagline": "Four on the floor, all night",
+   "accent": "#e83d9a",
+   "stream": "/stream/dance",
+   "songs": 0,
+   "plays_main": true
+  },
+  {
+   "id": "rock",
+   "name": "Hermes Agent Radio Rock",
+   "tagline": "Guitars, grit and volume",
+   "accent": "#d7263d",
+   "stream": "/stream/rock",
+   "songs": 1,
+   "plays_main": false
+  },
+  {
+   "id": "smooth",
+   "name": "Hermes Agent Radio Smooth",
+   "tagline": "Slow it down and stay a while",
+   "accent": "#2fb5a3",
+   "stream": "/stream/smooth",
+   "songs": 0,
+   "plays_main": true
+  },
+  {
+   "id": "techno",
+   "name": "Hermes Agent Radio Techno",
+   "tagline": "Machines, bass and no brakes",
+   "accent": "#8a5cf6",
+   "stream": "/stream/techno",
+   "songs": 7,
+   "plays_main": false
+  }
+ ]
+}

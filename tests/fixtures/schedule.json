@@ -1,0 +1,142 @@
+{
+ "timezone": "UTC",
+ "targets": {
+  "talk": 60,
+  "music": 30,
+  "transition": 10
+ },
+ "daily_average": {
+  "talk": 59.79,
+  "music": 30.21,
+  "transition": 10.0
+ },
+ "blocks": [
+  {
+   "programme": "night_shift",
+   "name": "The Night Shift",
+   "starts_at": "2026-11-11T00:00:00+00:00",
+   "ends_at": "2026-11-11T06:00:00+00:00",
+   "hosts": [
+    "lowkey"
+   ],
+   "ratio": {
+    "talk": 40,
+    "music": 50,
+    "transition": 10
+   },
+   "block_id": "night_shift@2026-11-11T00:00+00:00"
+  },
+  {
+   "programme": "morning_commit",
+   "name": "The Morning Commit",
+   "starts_at": "2026-11-11T06:00:00+00:00",
+   "ends_at": "2026-11-11T09:00:00+00:00",
+   "hosts": [
+    "ripley",
+    "south_paw"
+   ],
+   "ratio": {
+    "talk": 75,
+    "music": 15,
+    "transition": 10
+   },
+   "block_id": "morning_commit@2026-11-11T06:00+00:00"
+  },
+  {
+   "programme": "repo_roast",
+   "name": "Repo Roast Radio",
+   "starts_at": "2026-11-11T09:00:00+00:00",
+   "ends_at": "2026-11-11T12:00:00+00:00",
+   "hosts": [
+    "vex",
+    "tekkie"
+   ],
+   "ratio": {
+    "talk": 75,
+    "music": 15,
+    "transition": 10
+   },
+   "block_id": "repo_roast@2026-11-11T09:00+00:00"
+  },
+  {
+   "programme": "community_frequencies",
+   "name": "Community Frequencies",
+   "starts_at": "2026-11-11T12:00:00+00:00",
+   "ends_at": "2026-11-11T14:00:00+00:00",
+   "hosts": [
+    "lowkey",
+    "ripley"
+   ],
+   "ratio": {
+    "talk": 45,
+    "music": 45,
+    "transition": 10
+   },
+   "block_id": "community_frequencies@2026-11-11T12:00+00:00"
+  },
+  {
+   "programme": "inside_harness",
+   "name": "Inside the Harness",
+   "starts_at": "2026-11-11T14:00:00+00:00",
+   "ends_at": "2026-11-11T17:00:00+00:00",
+   "hosts": [
+    "tekkie",
+    "south_paw"
+   ],
+   "ratio": {
+    "talk": 80,
+    "music": 10,
+    "transition": 10
+   },
+   "block_id": "inside_harness@2026-11-11T14:00+00:00"
+  },
+  {
+   "programme": "agent_hotline",
+   "name": "The Agent Hotline",
+   "starts_at": "2026-11-11T17:00:00+00:00",
+   "ends_at": "2026-11-11T20:00:00+00:00",
+   "hosts": [
+    "ripley",
+    "tekkie"
+   ],
+   "ratio": {
+    "talk": 75,
+    "music": 15,
+    "transition": 10
+   },
+   "block_id": "agent_hotline@2026-11-11T17:00+00:00"
+  },
+  {
+   "programme": "after_dark",
+   "name": "Open Source After Dark",
+   "starts_at": "2026-11-11T20:00:00+00:00",
+   "ends_at": "2026-11-11T22:00:00+00:00",
+   "hosts": [
+    "south_paw",
+    "vex"
+   ],
+   "ratio": {
+    "talk": 65,
+    "music": 25,
+    "transition": 10
+   },
+   "block_id": "after_dark@2026-11-11T20:00+00:00"
+  },
+  {
+   "programme": "synthetic_mixtape",
+   "name": "The Synthetic Mixtape",
+   "starts_at": "2026-11-11T22:00:00+00:00",
+   "ends_at": "2026-11-12T00:00:00+00:00",
+   "hosts": [
+    "lowkey",
+    "vex"
+   ],
+   "ratio": {
+    "talk": 30,
+    "music": 60,
+    "transition": 10
+   },
+   "block_id": "synthetic_mixtape@2026-11-11T22:00+00:00"
+  }
+ ]
+}

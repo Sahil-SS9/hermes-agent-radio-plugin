@@ -1,0 +1,142 @@
+{
+ "songs": [
+  {
+   "song_id": "c9e3e34e544c4e79",
+   "title": "By Design",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "hip-hop",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "b46d9d596d8545fe",
+   "title": "Cold Justice",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "hip-hop",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "b060da899e964555",
+   "title": "Community Bed",
+   "artist": null,
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": null,
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "4afc237f47584cbb",
+   "title": "Concrete Throne",
+   "artist": "Sahil",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "hip-hop",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "902ffbf975104429",
+   "title": "Consequences",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": null,
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "eb6d5bc3ac4c46d6",
+   "title": "Fire Destruction",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": null,
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "c571947dcc644ee4",
+   "title": "My Blood",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "electronic",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "92799cd7bfbe48a6",
+   "title": "New System",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "rock",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "314a3c30392d4ffa",
+   "title": "No Logic For The Soul",
+   "artist": "Sahil",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "hip-hop",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "4d9fc0f9d3c44e51",
+   "title": "No Return",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "hip-hop",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "66105ada8c9d4a1f",
+   "title": "No Trace No Fear",
+   "artist": "Sovthpaw",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "electronic",
+   "tags": [],
+   "from_community": true
+  },
+  {
+   "song_id": "d404b69c9cf448a2",
+   "title": "Perfect Catalyst",
+   "artist": "Sahil",
+   "x_handle": null,
+   "x_url": null,
+   "suno_profile": null,
+   "genre": "electronic",
+   "tags": [],
+   "from_community": true
+  }
+ ],
+ "genres": [
+  "electronic",
+  "hip-hop",
+  "rock"
+ ],
+ "count": 33
+}

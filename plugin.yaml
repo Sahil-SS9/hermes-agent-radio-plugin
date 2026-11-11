@@ -1,0 +1,31 @@
+name: hermes-agent-radio
+version: 1.0.0
+manifest_version: 2
+description: "Hermes Agent Radio inside Hermes: a 24/7 station about Hermes Agent and open-source agents, written, fact-checked and voiced by agents. Desktop gets a player bar under the composer, a full player page, a status-bar dot and a detachable pop-out window; your agent gets tools to see what's on, read the guide and sourced show notes, browse songs, and send requests, song requests and votes."
+author: Sahil Saghir
+license: MIT
+homepage: https://github.com/Sahil-SS9/hermes-agent-radio
+requires_hermes: ">=0.23.0"
+tags: [radio, audio, music, news, desktop, community]
+provides_tools:
+  - radio_now_playing
+  - radio_guide
+  - radio_show_notes
+  - radio_stations
+  - radio_songs
+  - radio_request
+  - radio_song_request
+  - radio_vote
+provides_hooks: []
+requires_env: []
+config_schema:
+  station_url:
+    type: str
+    default: "https://hermesagentradio.com"
+    label: "Station address"
+    description: "The station the tools talk to. https anywhere; plain http only for a station on this machine. The Desktop player uses the public station unless a self-hosted address is set (see README)."
+  sender_name:
+    type: str
+    default: ""
+    label: "Name on requests"
+    description: "Optional name the hosts may credit when they answer your request. Empty = anonymous."

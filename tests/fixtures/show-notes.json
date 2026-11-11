@@ -1,0 +1,675 @@
+{
+ "window": {
+  "start": "2026-11-10T16:50:20.239068+00:00",
+  "end": "2026-11-11T16:50:20.239068+00:00"
+ },
+ "generated_at": "2026-11-11T16:50:20.401184+00:00",
+ "unresolved_claims": 0,
+ "items": [
+  {
+   "item_id": "4d9fc0f9d3c44e51",
+   "item_kind": "music",
+   "kind": null,
+   "started_at": "2026-11-10T16:52:13.420000+00:00",
+   "duration_s": 213.0,
+   "title": "No Return",
+   "artist": "Sovthpaw",
+   "claims": []
+  },
+  {
+   "item_id": "5074d18c6a0244ea",
+   "item_kind": "music",
+   "kind": null,
+   "started_at": "2026-11-10T16:55:53.020000+00:00",
+   "duration_s": 164.754,
+   "title": "Throne of My Own",
+   "artist": "Sahil",
+   "claims": []
+  },
+  {
+   "item_id": "craft-01-one-request-twenty-seconds",
+   "item_kind": "talk",
+   "kind": "deep_dive",
+   "started_at": "2026-11-10T16:58:43.860000+00:00",
+   "duration_s": 267.678,
+   "title": "This part is about a URL decoder, the small function that turns a percent sign and two characters into the character they stand for, and about how one malformed request can leave a Node server unable to answer anybody for 20 seconds.",
+   "artist": null,
+   "claims": [
+    {
+     "line": "This part is about a URL decoder, the small function that turns a percent sign and two characters into the character they stand for, and about how one malformed request can leave a Node server unable to answer anybody for 20 seconds.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "A decoder having a bad twenty seconds. That is the least dramatic outage I have ever been sold.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "It is the most common one, though. Picture a form on a small service you run yourself. Somebody posts a body full of percent-encoded junk. Not a flood. One request. The decoder walks the whole string, and while it walks it, nothing else in that process happens. Everybody else waiting on that server is waiting behind that one request.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "And nothing gets stolen.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Nothing stolen, nothing changed. The advisory says it plainly: availability only, no confidentiality or integrity impact. Which is the sentence that makes people stop reading, right up until the thing that is unavailable is the only copy of the service they have.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Fine. What is actually slow?",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "The fallback. There are two decoders in this package. The fast one is built into the language, and it refuses input it does not like. When it refuses, the package falls back to a hand-written one, and that one has a shape problem.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Shape.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "It scans the input for every distinct run of percent-encoded bytes and writes each one into a lookup table. Then, for every entry in that table, it does one search and replace across the entire string. So the work is the number of distinct escapes multiplied by the length of the string.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "And the attacker picks both of those numbers.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Both. Thirty-two thousand distinct escapes inside a couple of hundred kilobytes, and you have thirty-two thousand sweeps of the same string. That is where the twenty seconds goes.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Why is there a fallback at all?",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Because real input is malformed and the native decoder throws. The slow path exists for bad input. So the path an attacker needs is the path you wrote for exactly this situation, and one bad sequence at the end of a payload is enough to send you down it.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "You do not have to beat the fast decoder. You make it give up.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Here is the mistake, and it is one I would make. You hear URL decoder, you think URLs, and you think about the header limit: 16 kilobytes for a request header, so a query string can only get so bad. And that part is true. Through a query string the worst case lands around 40 milliseconds. Annoying. Not fatal.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Then somebody reads the body.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Somebody reads the body. The payload that costs 20 seconds is 224 kilobytes, which is not a large thing to send, and there is no header limit between you and it. If your form parsing hands the body to this same function, the advisory names a common query-string parser as one of the routes in, then the limit you were counting on sits on the wrong side of the request.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "So who is exposed?",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "You are, if untrusted input reaches this function, whether you call it or a dependency calls it on your behalf. You are not, if the only strings you decode are ones you produced yourself. And there is a sting for anybody who has been keeping up: the release that fixed the previous bug in this package is one of the affected versions. The last fix replaced one routine and left this replacement loop exactly as it was.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "So the version people moved to for safety is the version with the hole in it.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "That is the part worth keeping. A fix answers the bug it was written for. It does not audit the shape of the code around it, and quadratic work is invisible in review, because every line in that loop looks cheap. One scan is cheap. Two scans is cheap. Thirty-two thousand scans of the same string is an outage.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "And the fix tonight?",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "The patched release. Nothing in the advisory offers you a clever setting instead. The cost is a dependency bump you did not schedule, in a package you probably did not choose, which something else installed for you. So the job is not the upgrade itself. The job is finding out whether it is in your tree at all.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "Which is the least satisfying answer in security. Patch a thing you have never heard of, in a place you cannot see. That one is still unverified.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "This is the bit where I say on your own metal, and tonight I mean it twice. On your own metal there is one process and one thread. Nothing spins up behind you because a graph went vertical, so twenty seconds is twenty seconds for every single person on that box.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "In the cloud it would be twenty seconds and an invoice for the instances that failed to help. That one is still unverified.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "That is the cloud conspiracy and you said it for me. But it cuts both ways: the same box that has nobody to save it is the box where you can see exactly which request did the damage. That one is still unverified.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "So the advice is patch, and the consolation is that you will know who did it. That one is still unverified.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    },
+    {
+     "line": "The advice is patch, and the lesson is bigger than the package. When a function gets slower as the input grows, the attacker gets to choose the input. That is true of this decoder tonight, and it will be true of something else next month.",
+     "event_id": "ghsa:GHSA-qr28-fpjm-wq7f",
+     "url": "",
+     "title": "GHSA-qr28-fpjm-wq7f"
+    }
+   ]
+  },
+  {
+   "item_id": "22a47470f6a7",
+   "item_kind": "talk",
+   "kind": "headlines",
+   "started_at": "2026-11-10T18:11:31.640000+00:00",
+   "duration_s": 55.441,
+   "title": "Bot Mode now wakes once for multiple teammates, relaying forgotten replies and reporting never-answered states clearly.",
+   "artist": null,
+   "claims": [
+    {
+     "line": "Bot Mode now wakes once for multiple teammates, relaying forgotten replies and reporting never-answered states clearly.",
+     "event_id": "github:NousResearch/hermes-agent:pr:144789",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/144789",
+     "title": "Bot Mode message_agent: one combined wake for several teammates, a typed request, a forgotten reply relayed once, and a clear 'never answered' result (salvage #134003)"
+    },
+    {
+     "line": "Bot Mode now wakes once for multiple teammates, relaying forgotten replies and reporting never-answered states clearly.",
+     "event_id": "github:NousResearch/hermes-agent:pr:148888",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/148888",
+     "title": "feat(groups): opt-in auto routing (\"Assigned to X\") and Continue at the discussion cap"
+    },
+    {
+     "line": "The TUI and CLI support session rewinding, letting you edit earlier prompts or fork new sessions from them.",
+     "event_id": "github:NousResearch/hermes-agent:pr:144937",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/144937",
+     "title": "Rewind to an earlier prompt in the TUI and classic CLI (Esc Esc / /rewind): edit and resend, or fork from there; plus a 'No, tell Hermes instead' approval option (salvage #25074)"
+    },
+    {
+     "line": "Images now render inline in the terminal, using real pixels in supported terminals and colored blocks elsewhere.",
+     "event_id": "github:NousResearch/hermes-agent:pr:147293",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/147293",
+     "title": "feat: draw images inline in the CLI and TUI"
+    },
+    {
+     "line": "Skills can be locked to prevent the agent from modifying them via any tool, including terminal commands.",
+     "event_id": "github:NousResearch/hermes-agent:pr:147557",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/147557",
+     "title": "feat(skills): lock a skill so the agent can't change it (skill_manage, write_file, patch, terminal)"
+    },
+    {
+     "line": "A Daybreak switch is available for approved ChatGPT subscription models, gated by account catalog eligibility.",
+     "event_id": "github:NousResearch/hermes-agent:pr:148056",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/148056",
+     "title": "feat: Daybreak switch for catalog-listed ChatGPT subscription models"
+    },
+    {
+     "line": "Desktop gateway switching is fixed: connections stay active and selecting a gateway no longer blanks the session list.",
+     "event_id": "github:NousResearch/hermes-agent:pr:147681",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/147681",
+     "title": "fix(desktop): every gateway stays connected, and picking one no longer asks to switch or blanks the session list"
+    },
+    {
+     "line": "Gateway group chats support seating bots from other computers, unifying desktop and webapp connections.",
+     "event_id": "github:NousResearch/hermes-agent:pr:149655",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/149655",
+     "title": "feat(groups): seat a bot from another computer's gateway in a gateway-owned group chat (salvage #148466)"
+    },
+    {
+     "line": "Gateway group chats support seating bots from other computers, unifying desktop and webapp connections.",
+     "event_id": "github:NousResearch/hermes-agent:pr:150656",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/150656",
+     "title": "Every new group chat runs on a gateway, and named profiles on other computers can join (takeover of #149702)"
+    },
+    {
+     "line": "Approval prompts now reveal hidden Unicode and control bytes, ensuring commands are fully visible before execution.",
+     "event_id": "github:NousResearch/hermes-agent:pr:81403",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/81403",
+     "title": "Approval prompts show hidden Unicode, control bytes and padding instead of hiding them (CLI, gateway, TUI/Desktop)"
+    },
+    {
+     "line": "MCP consent cards display the exact commands or URLs servers will run or contact, masking only named secrets.",
+     "event_id": "github:NousResearch/hermes-agent:pr:85775",
+     "url": "https://github.com/NousResearch/hermes-agent/pull/85775",
+     "title": "Desktop: MCP consent card shows the command or URL each server will run or contact"
+    }
+   ]
+  },
+  {
+   "item_id": "93566760665e",
+   "item_kind": "talk",
+   "kind": "explainer",
+   "started_at": "2026-11-10T19:23:46.100000+00:00",
+   "duration_s": 149.045,
+   "title": "Have you ever opened a chat on your phone, then tried to edit it on your desktop, only to find the history is totally different?",
+   "artist": null,
+   "claims": [
+    {
+     "line": "Have you ever opened a chat on your phone, then tried to edit it on your desktop, only to find the history is totally different?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "This release fixes that by ensuring one gateway owns every conversation, so the CLI, TUI, and Desktop all attach to the same queue.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "In other words, it\u2019s one brain for all the faces.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Exactly. And you can now serve that whole Desktop workspace from your own gateway in a browser tab, off by default until you toggle the setting.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Well, actually, you need to enable it in Settings or via the flag, but yes, it ships in the Docker image and the Nix package.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "So I can access it from anywhere on my network?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Yes, behind a public URL with sign-in if you want, but locally it\u2019s just a tab in your existing setup.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Wait, really? What about pictures? Can I see them in the terminal?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "You can. The CLI and TUI now draw images right in the chat instead of printing a file path.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Real pixels in the terminal. Finally.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "It works with full resolution in VS Code\u2019s terminal if image support is on, and uses colored blocks elsewhere.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Right, back to the docs. You can also rewind a conversation now by pressing Esc twice or typing the command to fork from an earlier point.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Does the original session get deleted?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "No, the original stays exactly as it was while you edit and resend the fork.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Nice. What about multiple machines? Do I have to switch windows?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Desktop keeps all your gateways connected at once so switching between local and remote SSH instances is instant.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "The release notes say one-shot runs send about 1,570 fewer prompt tokens, and patch operations are faster with LSP on.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Fewer tokens per run. Efficient.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "And long-lived gateways let go of closed sessions' memory, so the sidebar doesn\u2019t slow down even with 35,000 cron runs.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "From 121 seconds to instant? That\u2019s a big jump.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Plugins also got an overhaul. You can update everything at once, and the catalog grew from about 600 to over 1,050 entries.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Is there a tier for vendor-built plugins?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Yes, a new Verified tier marks plugins built by the vendor itself, and breaking updates are held back.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Please stay calm, we have more highlights. Paid tools now show price tags and spend limits in the approval prompt.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Does it stop me from overspending?",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "It asks before a chat goes over its limit, even in YOLO mode.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Group Chats run themselves now, with bots picking answers automatically and showing live status like 'scout \u00b7 terminal \u00b7 7s'.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "And the skills are leaner, merged office skills into one, and you can lock them so the agent doesn\u2019t rewrite them.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    },
+    {
+     "line": "Correct. Five new official plugins including Meshy and ElevenLabs, and a keychain vault key for passwords.",
+     "event_id": "6879ba7c1fa5c912",
+     "url": "",
+     "title": "release:v0.23.0#highlights@v0.23.0:87a34c88"
+    }
+   ]
+  },
+  {
+   "item_id": "craft-02-the-fence-around-the-wrong-field",
+   "item_kind": "talk",
+   "kind": "deep_dive",
+   "started_at": "2026-11-10T19:42:34.240000+00:00",
+   "duration_s": 326.461,
+   "title": "You run a permissions audit. It comes back clean. Nobody on the tenant team has permission to read the DNS credentials. The secret sits in the platform namespace, they cannot open it, and they have no access to the ClusterIssuer either.",
+   "artist": null,
+   "claims": [
+    {
+     "line": "You run a permissions audit. It comes back clean. Nobody on the tenant team has permission to read the DNS credentials. The secret sits in the platform namespace, they cannot open it, and they have no access to the ClusterIssuer either.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "And somebody in that namespace can still make the controller spend those credentials.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Just by asking for them to be used.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "This part is about a boundary drawn around the wrong thing. Around who can read the key, instead of around who gets to decide where the key goes.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Start with what a Challenge is supposed to be. You ask cert-manager for a certificate. It creates an Order. The Order chooses a solver from the Issuer, and the solver is the policy: which DNS provider, which zones, which names it is allowed to answer for. Only then does the Order create a Challenge, which is the proof that you control the name.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "So in the intended flow, the solver has already been chosen by the time a Challenge exists. The Challenge carries the choice. It does not make it.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Now create one directly. A Challenge is an object in the tenant's namespace, and this tenant has been given permission to create it. Think about how little you need to hold to do it: create permission in one namespace, and nothing else. You never touch the secret, and you never read the ClusterIssuer. On create, cert-manager performs no admission validation tying it to an Order, to an owner, or to a solver the Issuer selected.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "So the object arrives with its own solver inside it. The controller picks it up and uses the solver the tenant wrote. The zone selector, the name selector, the labels, all the policy that was meant to fence the solver in, are never consulted, because they are consulted when the solver is chosen from the Issuer, and this object skipped that step.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Here is the turn. When the Challenge references a ClusterIssuer, cert-manager still takes two things from the ClusterIssuer: the namespace the DNS secret lives in, and whether ambient credentials are allowed. But it takes the provider configuration from the tenant's object. Platform credentials, tenant-chosen destination.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "With acme-dns, that is disclosure. The host named in the tenant's solver receives the API user and the API key that cert-manager loaded from the ClusterIssuer's namespace. The tenant never reads the secret. The controller reads it and hands it over.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "For other providers the advisory is careful, and so am I: credential use, policy bypass, and the risk of DNS changes on names the policy meant to exclude. It does not claim disclosure there without somebody demonstrating it provider by provider.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Ambient credentials. The key nobody typed, scoped to a cluster, available to a controller. That is the cloud conspiracy with a receipt: the credential you never see is the one that gets spent.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "You cannot blame the cloud for a controller that trusts a field. That is a code path, not a weather system.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Both are true. The credential sits there ambient, and the controller made it spendable by a tenant.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Then let me play the sceptic, because somebody has to. A namespace can create an object that a cluster-scoped controller acts on. Is that a flaw in cert-manager, or is that simply how RBAC works? What makes it a CVE?",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "The advisory answers that directly, and the answer holds. The documented workflow never asks a user to create a Challenge. A user asks for a certificate; cert-manager makes the Order, chooses the solver, makes the Challenge. So the create permission is not a security boundary. It arrived in the aggregate edit role.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Then take it out of the role.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Yes. And also stop the controller treating a hand-written solver as authoritative when the credential came from somewhere else. The advisory wants both, and it is right to. Reject standalone Challenges that no Order owns, and move Challenge and Order creation out of edit unless direct use is a boundary you genuinely support.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Fine. I withdraw it. It is RBAC plus a controller that believed a field it had no business knowing.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "That is the worst take of the week, by the way. Just RBAC, for a bug where the tenant never touches the secret and the controller does the rest.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "I will take it. It was a bad take and I enjoyed it.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "The part I would hate is being the person who reviewed that role and called it least privilege.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "Who does this reach? Multi-tenant clusters. You need a namespace user who can create Challenges, a controller reconciling them across the whole cluster, and a ClusterIssuer with a DNS solver whose secret sits in the cluster resource namespace, or which relies on ambient credentials. The aggregate edit role is enough to get a tenant there, which is the part that should make you go and look.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "And who does it not reach? If you are the only tenant, and everyone who can create objects in the cluster already holds the DNS credentials, there is no boundary to cross. That is not a defence. It is a smaller blast radius.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "The advisory went out on 29 October, and the fix is the patched release on both affected lines. Taking it costs a controller upgrade, and I would expect that to wait for a maintenance window, because so much depends on certificates being issued.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "And if you cannot take it tonight, you have a lever rather than a fix. Take Challenge and Order creation out of the aggregate edit role. The advisory lists that as a mitigation. It narrows the path. It does not close it, because the controller will still reconcile a direct object from anyone who holds the permission for some other reason.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "So the order is: upgrade, then find out who can create a Challenge and an Order in your cluster, then ask why that permission was ever in a role you hand to tenants.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "What does it teach?",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "That a credential is only as scoped as the object that decides where it goes. You can lock a secret in a namespace and still let a tenant point the machine that holds it at their own server.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "The boundary has to sit on the object the controller acts on. Not on the field the user fills in, and not on the read permission for the secret.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    },
+    {
+     "line": "The audit was clean. The audit was also answering a question nobody needed answered.",
+     "event_id": "ghsa:GHSA-8rvj-mm4h-c258",
+     "url": "",
+     "title": "GHSA-8rvj-mm4h-c258"
+    }
+   ]
+  }
+ ],
+ "disclaimer": "Tekkie is a fictional AI presenter; not affiliated with or endorsed by Teknium or Nous Research. All hosts are fictional AI presenters and never pose as real contributors. Where a presenter's voice is derived from a real person's recording, that person gave consent in advance, the voice has been altered into a distinct character voice, and the presenter does not speak for, endorse, or represent them."
+}
