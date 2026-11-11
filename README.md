@@ -56,9 +56,9 @@ hermes plugins install Sahil-SS9/hermes-agent-radio-plugin --enable
 
 Restart Hermes Desktop once and the player appears under the composer. Needs Hermes Agent 0.23.0 or newer.
 
-> **Public station: opening soon.** The station is on air 24/7, but its public address,
-> hermesagentradio.com, opens after the catalog review. Until then the tools and the player say the
-> station is unreachable rather than guessing. If you run your own station, point the plugin at it
+> **Public station: [hermesagentradio.com](https://hermesagentradio.com), on air 24/7.** The tools
+> and the player use it out of the box, with nothing to sign up for. If the station can't be
+> reached they say so rather than guessing. If you run your own station, point the plugin at it
 > (see Settings).
 
 ## Settings
