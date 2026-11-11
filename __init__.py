@@ -182,14 +182,23 @@ def _host_names(hosts: list[str]) -> str:
     return ", ".join(h.replace("_", " ").title() for h in hosts) or "the station"
 
 
+#: Station furniture: the short links between pieces. Real, but not what "up next" should list.
+_FURNITURE = {"back_announce", "song_intro", "station_id", "ident", "jingle", "promo", "transition", "sign_off"}
+
+
+def _is_furniture(item: dict[str, Any]) -> bool:
+    return str(item.get("segment_kind") or "") in _FURNITURE
+
+
 def now_playing(base: str | None = None) -> str:
     doc = get("/now-playing.json", base)
     stream = urllib.parse.urljoin(station_url(base) + "/", str(doc.get("stream_url") or "/stream"))
     lines = [f"On air: {_item(doc.get('now'))}."]
     upcoming = doc.get("up_next") or ([doc["next"]] if doc.get("next") else [])
+    upcoming = [i for i in upcoming if isinstance(i, dict) and not _is_furniture(i)]
     if upcoming:
         lines.append("Up next: " + "; ".join(_item(i) for i in upcoming[:3]) + ".")
-    if doc.get("listeners") is not None:
+    if doc.get("listeners"):
         lines.append(f"Listeners: {doc['listeners']}.")
     lines.append(f"Listen: {stream} (or the player at {station_url(base)}/listen).")
     return "\n".join(lines)

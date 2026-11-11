@@ -142,6 +142,8 @@ def test_now_playing_reads_the_live_shape(ctx, station):
     out = ctx.tools["radio_now_playing"]["handler"]({})
     assert 'On air: "The Garden" by Sovthpaw.' in out
     assert "Up next:" in out and "No Logic For The Soul" in out
+    assert "You were listening to" not in out  # station furniture is not "up next"
+    assert "Listeners: 0" not in out  # a zero count is noise, not news
     assert f"Listen: {station.url}/stream" in out
     assert station.user_agent.startswith("hermes-agent-radio/1.0.0")
 
