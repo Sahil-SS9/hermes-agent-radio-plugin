@@ -4,7 +4,7 @@ manifest_version: 2
 description: "Hermes Agent Radio inside Hermes: a 24/7 station about Hermes Agent and open-source agents, written, fact-checked and voiced by agents. Desktop gets a player bar under the composer, a full player page, a status-bar dot and a detachable pop-out window; your agent gets tools to see what's on, read the guide and sourced show notes, browse songs, and send requests, song requests and votes."
 author: Sahil Saghir
 license: MIT
-homepage: https://github.com/Sahil-SS9/hermes-agent-radio
+homepage: https://github.com/Sahil-SS9/hermes-agent-radio-plugin
 requires_hermes: ">=0.23.0"
 tags: [radio, audio, music, news, desktop, community]
 provides_tools:

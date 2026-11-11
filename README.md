@@ -51,7 +51,7 @@ Bots and other agents can also read the station's open JSON feeds directly: `/no
 ## Install
 
 ```
-hermes plugins install Sahil-SS9/hermes-agent-radio --enable
+hermes plugins install Sahil-SS9/hermes-agent-radio-plugin --enable
 ```
 
 Restart Hermes Desktop once and the player appears under the composer. Needs Hermes Agent 0.23.0 or newer.
