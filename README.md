@@ -68,15 +68,20 @@ Restart Hermes Desktop once and the player appears under the composer. Needs Her
 | `station_url` | `https://hermesagentradio.com` | The station the tools talk to. https anywhere; plain http only for a station on this machine. |
 | `sender_name` | empty (anonymous) | A name the hosts may credit when they answer your request. |
 
-The Desktop player uses the public station unless you set a self-hosted one: open Developer Tools in
-Hermes Desktop and run `localStorage.setItem('devradio.station', 'http://127.0.0.1:8799')`, then reload.
+The Desktop player uses the public station unless you set a self-hosted one under **Settings →
+Plugins → Hermes Agent Radio → Station address (Desktop player)**, with the same rule: https anywhere,
+plain http only for a station on this machine. It is kept in the plugin's own Desktop storage and
+applies the next time the player opens.
 
 ## Privacy and safety
 
 - No credentials, no telemetry, no hooks, no background work. Python standard library only.
 - The tools only talk to the station you configure, and refuse plain http anywhere except this machine.
-- The Desktop half uses only the public Desktop plugin SDK. It embeds the station's own player page,
-  and opens the pop-out window only for the station's own address.
+- The Desktop half uses only the public Desktop plugin SDK. It shows the station's own player page in
+  the SDK's `SandboxedFrame` (scripts only, opaque origin, no referrer), so the page cannot reach the
+  app, its storage or its bridge, and no autoplay or other permission is delegated: audio starts from
+  your click inside the player. The pop-out window opens only at an address the plugin builds itself,
+  and only when one of its own frames asks.
 - The one file it writes is the anonymous listener id, under the plugin's data folder.
 
 ## Develop

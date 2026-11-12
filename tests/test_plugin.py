@@ -8,6 +8,8 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import shutil
+import subprocess
 import sys
 import threading
 from datetime import UTC, datetime, timedelta
@@ -145,7 +147,7 @@ def test_now_playing_reads_the_live_shape(ctx, station):
     assert "You were listening to" not in out  # station furniture is not "up next"
     assert "Listeners: 0" not in out  # a zero count is noise, not news
     assert f"Listen: {station.url}/stream" in out
-    assert station.user_agent.startswith("hermes-agent-radio/1.0.0")
+    assert station.user_agent.startswith("hermes-agent-radio/1.0.1")
 
 
 def test_guide_marks_the_show_on_now_and_names_hosts(ctx):
@@ -251,9 +253,25 @@ def test_command_routes(ctx, station):
 def test_desktop_half_stays_inside_the_sdk_surface():
     source = (ROOT / "desktop" / "plugin.js").read_text()
     imports = [line for line in source.splitlines() if line.startswith("import ")]
-    assert imports == ["import { jsx } from 'react/jsx-runtime'"]
+    assert imports == ["import { jsx } from 'react/jsx-runtime'", "import { SandboxedFrame } from '@hermes/plugin-sdk'"]
     for banned in ("eval(", "new Function", "import(", "createElement('script'", "MutationObserver", "data-slot", "prototype"):
         assert banned not in source
     assert "const DEFAULT_STATION = 'https://hermesagentradio.com'" in source
-    # Detach only for the station's own pages, from the station's own frames.
-    assert "isStationPage(event.origin, data.url)" in source
+    # Station pages render only through the SDK's sandboxed frame: no raw iframe, no autoplay grant,
+    # no raw web storage, and messages are matched by their source frame, never by origin.
+    for banned in ("'iframe'", "allow: 'autoplay'", "localStorage", "event.origin"):
+        assert banned not in source, banned
+    assert "jsx(SandboxedFrame," in source
+    assert "frameFor(event.source)" in source
+
+
+def test_desktop_half_behaviour_under_node():
+    """Run tests/desktop_harness.mjs: the real plugin.js against a fake host (see the file header)."""
+    node = shutil.which("node")
+    if node is None:
+        pytest.skip("node is not installed")
+    result = subprocess.run(
+        [node, str(ROOT / "tests" / "desktop_harness.mjs")], capture_output=True, text=True, timeout=60, check=False
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert result.stdout.rstrip().endswith("ALL OK"), result.stdout

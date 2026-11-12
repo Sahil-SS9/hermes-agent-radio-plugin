@@ -33,7 +33,7 @@ from pathlib import Path
 from typing import Any
 
 PLUGIN_NAME = "hermes-agent-radio"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 DEFAULT_STATION = "https://hermesagentradio.com"
 TIMEOUT_S = 8.0
 USER_AGENT = f"{PLUGIN_NAME}/{VERSION} (+https://github.com/Sahil-SS9/hermes-agent-radio-plugin)"
