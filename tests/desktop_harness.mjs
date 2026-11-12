@@ -201,7 +201,7 @@ function post(env, source, data, origin = 'null') {
 // 5. The file never touches raw localStorage (the fake window throws if it does) and imports only
 //    the jsx runtime and the SDK.
 {
-  const imports = source.split('\n').filter((l) => l.startsWith('import '))
+  const imports = source.split(/\r?\n/).filter((l) => l.startsWith('import '))
   check(
     'imports are the jsx runtime and the SDK only',
     JSON.stringify(imports) === JSON.stringify(["import { jsx } from 'react/jsx-runtime'", "import { SandboxedFrame } from '@hermes/plugin-sdk'"]),
